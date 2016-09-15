@@ -13,7 +13,7 @@ Run `RunMeFirst.py` within the root directory of Auto_EAP. This will compile the
 ## Help
 -----
 
-./Auto_EAP.py -h
+'./Auto_EAP.py -h
 usage: Auto_EAP.py [-h] -i Interface -s SSID -U Usernamefile -p Password -K
                    Key_mgmt -E Eap_type
 
@@ -29,7 +29,7 @@ optional arguments:
   -K Key_mgmt, --key_mgmt Key_mgmt
                         Key_Management type to use
   -E Eap_type, --eap_type Eap_type
-                        Eap type to use
+                        Eap type to use'
 
 
 ## Todo list

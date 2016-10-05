@@ -29,7 +29,7 @@ wpas_ctrl = '/var/run/wpa_supplicant'
 
 #Sets the wpa_supplicant conf, CLI interpreter and the interface to be used####
 def wpas_connect():
-	os.system('wpa_supplicant -Dnl80211 -i' + args.interface +' -c lib/wpa_supplicant.conf -K -B  > /dev/null')
+	os.system('wpa_supplicant -i' + args.interface +' -c lib/wpa_supplicant.conf -K -B')
 	ifaces = []
 	if os.path.isdir(wpas_ctrl):
 		try:
@@ -66,7 +66,6 @@ def main():
 		wpa.request('SET_NETWORK 0 ssid "' + args.ssid + '"')
 		wpa.request('SET_NETWORK 0 key_mgmt ' + args.key_mgmt +' ')
 		wpa.request('SET_NETWORK 0 eap ' + args.eap_type +' ')
-		wpa.request('LIST_NETWORKS')
 
 		if bool(args.usernamefile):
 			try:
@@ -100,8 +99,8 @@ def main():
 						print failed 
 						count=10
 						break
-				wpa.request('DISABLE_NETWORK 0')
-				time.sleep(2)
+			wpa.request('DISABLE_NETWORK 0')
+			time.sleep(2)
 		wpa.request('REMOVE_NETWORK 0')
 		print 'Completed'
 		wpa.detach()

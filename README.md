@@ -1,6 +1,7 @@
 # Auto_EAP
 
 ## Introduction
+*Published Sepetember 15, 2016*
 -----
 Auto_EAP.py is a script designed to perform automated brute-force authentication attacks against various types of EAP networks. These types of wireless networks provide an interface to facilitate password guessing of domain credentials as radius servers check authentication against Active Directory. Using the python library wpaspy, created by [Jouni Malinen <j@w1.fi>] (https://github.com/jmalinen/hostap/tree/master/wpaspy)
 to interact with the wpa_supplicant daemon, automated authentication attacks can be preformed with the intent of not causing account lock-outs. 
@@ -50,6 +51,8 @@ optional arguments:
 
 ## Todo list
 -----
+* [✓] Resoved bug  with .a type wireless cards (Shout out to [Havok0x90] (https://twitter.com/havok0x90) for his help in resolving this issue)
 * [-] Add multi-threading functionality
 * [-] Add support for password lists
+
 

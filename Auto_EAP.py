@@ -29,7 +29,7 @@ wpas_ctrl = '/var/run/wpa_supplicant'
 
 #Sets the wpa_supplicant conf, CLI interpreter and the interface to be used####
 def wpas_connect():
-	os.system('wpa_supplicant -i' + args.interface +' -c lib/wpa_supplicant.conf -K -B')
+	os.system('wpa_supplicant -i' + args.interface +' -c lib/wpa_supplicant.conf -K -B > /dev/null')
 	ifaces = []
 	if os.path.isdir(wpas_ctrl):
 		try:

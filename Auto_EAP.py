@@ -19,8 +19,8 @@ parser.add_argument('-i', '--interface', metavar='Interface', dest='interface', 
 parser.add_argument('-s', '--ssid', metavar='SSID', dest='ssid', action='store', help='The SSID to attack', required=True)
 parser.add_argument('-U', '--User', metavar='Usernamefile', dest='usernamefile', action='store', help='Path to username file', required=True)
 parser.add_argument('-p', '--password', metavar='Password', dest='password', action='store', help='Password to use', required=True)
-parser.add_argument('-K', '--key_mgmt', metavar='Key_mgmt', default='WPA-EAP', dest='key_mgmt', action='store', help='Key_Management type to use')
-parser.add_argument('-E', '--eap_type', metavar='Eap_type', default='PEAP', dest='eap_type', action='store', help='Eap type to use')
+parser.add_argument('-K', '--key_mgmt', metavar='Key_mgmt', default='WPA-EAP', dest='key_mgmt', action='store', help='Key management type to use (default: WPA-EAP)')
+parser.add_argument('-E', '--eap_type', metavar='Eap_type', default='PEAP', dest='eap_type', action='store', help='Eap type to use (default: PEAP)')
 args = parser.parse_args()
 
 
